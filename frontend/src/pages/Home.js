@@ -1,42 +1,43 @@
-import { useEffect }from 'react'
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
-import { useAuthContext } from "../hooks/useAuthContext"
+import { useEffect } from 'react';
+import { useBusinessesContext } from '../hooks/useBusinessesContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 // components
-import WorkoutDetails from '../components/WorkoutDetails'
-import WorkoutForm from '../components/WorkoutForm'
+import BusinessDetails from '../components/BusinessDetails';
+import BusinessForm from '../components/BusinessForm';
 
 const Home = () => {
-  const {workouts, dispatch} = useWorkoutsContext()
-  const {user} = useAuthContext()
+  const { businesses, dispatch } = useBusinessesContext();
+  const { user } = useAuthContext();
 
   useEffect(() => {
-    const fetchWorkouts = async () => {
-      const response = await fetch('/api/workouts', {
-        headers: {'Authorization': `Bearer ${user.token}`},
-      })
-      const json = await response.json()
+    const fetchBusinesses = async () => {
+      const response = await fetch('/api/businesses', {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
+      const json = await response.json();
 
       if (response.ok) {
-        dispatch({type: 'SET_WORKOUTS', payload: json})
+        dispatch({ type: 'SET_BUSINESSES', payload: json });
       }
-    }
+    };
 
     if (user) {
-      fetchWorkouts()
+      fetchBusinesses();
     }
-  }, [dispatch, user])
+  }, [dispatch, user]);
 
   return (
     <div className="home">
-      <div className="workouts">
-        {workouts && workouts.map((workout) => (
-          <WorkoutDetails key={workout._id} workout={workout} />
-        ))}
+      <div className="businesses">
+        {businesses &&
+          businesses.map((business) => (
+            <BusinessDetails key={business._id} business={business} />
+          ))}
       </div>
-      <WorkoutForm />
+      <BusinessForm />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
