@@ -1,7 +1,8 @@
 const express = require('express');
 const {
   createBusiness,
-  getBusinesses,
+  getUsersBusinesses,
+  getPublishedBusinesses,
   getBusiness,
   deleteBusiness,
   updateBusiness,
@@ -10,11 +11,14 @@ const requireAuth = require('../middleware/requireAuth');
 
 const router = express.Router();
 
+// GET all published businesses
+router.get('/', getPublishedBusinesses);
+
 // require auth for all business routes
 router.use(requireAuth);
 
-// GET all businesses
-router.get('/', getBusinesses);
+// GET users businesses
+router.get('/me', getUsersBusinesses);
 
 //GET a single business
 router.get('/:id', getBusiness);

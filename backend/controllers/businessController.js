@@ -1,8 +1,17 @@
 const Business = require('../models/businessModel');
 const mongoose = require('mongoose');
 
-// get all businesses
-const getBusinesses = async (req, res) => {
+// get all published businesses
+const getPublishedBusinesses = async (req, res) => {
+  const businesses = await Business.find({ isPublished: true }).sort({
+    createdAt: -1,
+  });
+
+  res.status(200).json(businesses);
+};
+
+// get one users businesses
+const getUsersBusinesses = async (req, res) => {
   const user_id = req.user._id;
 
   const businesses = await Business.find({ user_id }).sort({ createdAt: -1 });
@@ -29,19 +38,64 @@ const getBusiness = async (req, res) => {
 
 // create new business
 const createBusiness = async (req, res) => {
-  const { title, load, reps } = req.body;
+  const {
+    businessName,
+    owner,
+    shortDescription,
+    longDescription,
+    category,
+    addressOne,
+    addressTwo,
+    city,
+    state,
+    zip,
+    phone,
+    areasServed,
+    isPublished,
+  } = req.body;
 
   let emptyFields = [];
 
-  if (!title) {
-    emptyFields.push('title');
+  if (!businessName) {
+    emptyFields.push('businessName');
   }
-  if (!load) {
-    emptyFields.push('load');
+  if (!owner) {
+    emptyFields.push('owner');
   }
-  if (!reps) {
-    emptyFields.push('reps');
+  if (!shortDescription) {
+    emptyFields.push('shortDescription');
   }
+  if (!longDescription) {
+    emptyFields.push('longDescription');
+  }
+  if (!category) {
+    emptyFields.push('category');
+  }
+  if (!addressOne) {
+    emptyFields.push('addressOne');
+  }
+  if (!addressTwo) {
+    emptyFields.push('addressTwo');
+  }
+  if (!city) {
+    emptyFields.push('city');
+  }
+  if (!state) {
+    emptyFields.push('state');
+  }
+  if (!zip) {
+    emptyFields.push('zip');
+  }
+  if (!phone) {
+    emptyFields.push('phone');
+  }
+  if (!areasServed) {
+    emptyFields.push('areasServed');
+  }
+  if (!isPublished) {
+    emptyFields.push('isPublished');
+  }
+
   if (emptyFields.length > 0) {
     return res
       .status(400)
@@ -51,7 +105,22 @@ const createBusiness = async (req, res) => {
   // add doc to db
   try {
     const user_id = req.user._id;
-    const business = await Business.create({ title, load, reps, user_id });
+    const business = await Business.create({
+      businessName,
+      owner,
+      shortDescription,
+      longDescription,
+      category,
+      addressOne,
+      addressTwo,
+      city,
+      state,
+      zip,
+      phone,
+      areasServed,
+      isPublished,
+      user_id,
+    });
     res.status(200).json(business);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -98,7 +167,8 @@ const updateBusiness = async (req, res) => {
 };
 
 module.exports = {
-  getBusinesses,
+  getUsersBusinesses,
+  getPublishedBusinesses,
   getBusiness,
   createBusiness,
   deleteBusiness,
