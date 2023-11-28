@@ -28,14 +28,54 @@ const BusinessDetails = ({ business }) => {
 
   return (
     <div className="business-details">
-      <h4>{business.title}</h4>
+      <h4>{business.businessName}</h4>
       <p>
-        <strong>Load (kg): </strong>
-        {business.load}
+        <strong>Owner: </strong>
+        {business.owner}
       </p>
       <p>
-        <strong>Reps: </strong>
-        {business.reps}
+        <strong>Description: </strong>
+        {business.shortDescription}
+      </p>
+      <p>
+        <strong>Full Description: </strong>
+        {business.longDescription}
+      </p>
+      <p>
+        <strong>Category: </strong>
+        {business.category}
+      </p>
+      <p>
+        <strong>Address One: </strong>
+        {business.addressOne}
+      </p>
+      <p>
+        <strong>Address Two: </strong>
+        {business.addressTwo}
+      </p>
+      <p>
+        <strong>City: </strong>
+        {business.city}
+      </p>
+      <p>
+        <strong>State: </strong>
+        {business.state}
+      </p>
+      <p>
+        <strong>Zip: </strong>
+        {business.zip}
+      </p>
+      <p>
+        <strong>Phone: </strong>
+        {business.phone}
+      </p>
+      <p>
+        <strong>Areas Served: </strong>
+        {business.areasServed}
+      </p>
+      <p>
+        <strong>Published ? : </strong>
+        {business.isPublished}
       </p>
       <p>
         {formatDistanceToNow(new Date(business.createdAt), { addSuffix: true })}
