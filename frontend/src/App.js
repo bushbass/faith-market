@@ -24,7 +24,7 @@ function App() {
             <Route
               exact
               path="/me"
-              element={user ? <MyBusinesses /> : <Navigate to="/login" />}
+              element={user ? <MyBusinesses /> : <Login />}
             />
             <Route
               path="/login"

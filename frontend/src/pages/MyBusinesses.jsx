@@ -24,7 +24,6 @@ const MyBusinesses = () => {
     };
 
     if (user) {
-      console.log('user exists');
       fetchMyBusinesses();
     }
   }, [dispatch, user]);
