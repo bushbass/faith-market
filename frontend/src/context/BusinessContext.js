@@ -8,6 +8,10 @@ export const businessesReducer = (state, action) => {
       return {
         businesses: action.payload,
       };
+    case 'SET_MY_BUSINESSES':
+      return {
+        myBusinesses: action.payload,
+      };
     case 'CREATE_BUSINESS':
       return {
         businesses: [action.payload, ...state.businesses],
@@ -26,6 +30,7 @@ export const businessesReducer = (state, action) => {
 export const BusinessesContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(businessesReducer, {
     businesses: null,
+    myBusinesses: null,
   });
 
   return (

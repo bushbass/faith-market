@@ -12,7 +12,7 @@ const BusinessForm = () => {
   const [longDescription, setLongDescription] = useState('');
   const [category, setCategory] = useState('');
   const [addressOne, setAddressOne] = useState('');
-  const [addressTwo, setAddressTwo] = useState('');
+  const [addressTwo, setAddressTwo] = useState('n/a');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
