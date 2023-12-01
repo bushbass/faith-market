@@ -17,14 +17,10 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
+            <Route exact path="/me" element={<MyBusinesses />} />
             <Route
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
-            />
-            <Route
-              exact
-              path="/me"
-              element={user ? <MyBusinesses /> : <Login />}
             />
             <Route
               path="/login"
