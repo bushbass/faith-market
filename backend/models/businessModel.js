@@ -12,6 +12,10 @@ const businesseschema = new Schema(
       type: String,
       required: true,
     },
+    campus: {
+      type: String,
+      required: true,
+    },
     shortDescription: {
       type: String,
       required: true,

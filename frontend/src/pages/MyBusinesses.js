@@ -30,8 +30,10 @@ const MyBusinesses = () => {
 
   return (
     <div className="home">
+      {console.log(myBusinesses)}
       <div className="businesses">
         <h2>My Businesses</h2>
+        {!user && <h3>You must be logged in to view your businesses.</h3>}
         {myBusinesses &&
           myBusinesses.map((business) => (
             <BusinessDetails key={business._id} business={business} />

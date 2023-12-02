@@ -11,11 +11,11 @@ const requireAuth = require('../middleware/requireAuth');
 
 const router = express.Router();
 
-// require auth for all business routes
-router.use(requireAuth);
-
 // GET all published businesses
 router.get('/', getPublishedBusinesses);
+
+// require auth for all business routes
+router.use(requireAuth);
 
 // GET users businesses
 router.get('/me', getUsersBusinesses);

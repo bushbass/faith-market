@@ -4,7 +4,6 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 // components
 import BusinessDetails from '../components/BusinessDetails';
-import BusinessForm from '../components/BusinessForm';
 
 const Home = () => {
   const { businesses, dispatch } = useBusinessesContext();
@@ -29,6 +28,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      {console.log(businesses)}
       <div className="businesses">
         <h2>All Published Businesses</h2>
         {businesses &&
@@ -36,7 +36,6 @@ const Home = () => {
             <BusinessDetails key={business._id} business={business} />
           ))}
       </div>
-      <BusinessForm />
     </div>
   );
 };

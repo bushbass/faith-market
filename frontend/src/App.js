@@ -5,8 +5,8 @@ import { useAuthContext } from './hooks/useAuthContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Navbar from './components/Navbar';
 import MyBusinesses from './pages/MyBusinesses';
+import Navbar from './components/Navbar';
 
 function App() {
   const { user } = useAuthContext();
@@ -21,11 +21,7 @@ function App() {
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
             />
-            <Route
-              exact
-              path="/me"
-              element={user ? <MyBusinesses /> : <Login />}
-            />
+            <Route exact path="/me" element={<MyBusinesses />} />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}

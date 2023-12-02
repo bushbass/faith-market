@@ -62,6 +62,9 @@ const createBusiness = async (req, res) => {
   if (!owner) {
     emptyFields.push('owner');
   }
+  if (!campus) {
+    emptyFields.push('campus');
+  }
   if (!shortDescription) {
     emptyFields.push('shortDescription');
   }

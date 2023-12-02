@@ -8,6 +8,7 @@ const BusinessForm = () => {
 
   const [businessName, setBusinessName] = useState('');
   const [owner, setOwner] = useState('');
+  const [campus, setCampus] = useState('');
   const [shortDescription, setShortDescription] = useState('');
   const [longDescription, setLongDescription] = useState('');
   const [category, setCategory] = useState('');
@@ -64,6 +65,7 @@ const BusinessForm = () => {
       setBusinessName('');
 
       setOwner('');
+      setCampus('');
       setShortDescription('');
       setLongDescription('');
       setCategory('');
@@ -99,6 +101,13 @@ const BusinessForm = () => {
         onChange={(e) => setOwner(e.target.value)}
         value={owner}
         className={emptyFields.includes('owner') ? 'error' : ''}
+      />
+      <label>Campus:</label>
+      <input
+        type="text"
+        onChange={(e) => setCampus(e.target.value)}
+        value={campus}
+        className={emptyFields.includes('campus') ? 'error' : ''}
       />
       <label>Short Description:</label>
       <input

@@ -28,7 +28,12 @@ const BusinessDetails = ({ business }) => {
 
   return (
     <div className="business-details">
+      {console.log('bus from details component', business)}
       <h4>{business.businessName}</h4>
+      <p>
+        <strong>Campus: </strong>
+        {business.campus}
+      </p>
       <p>
         <strong>Owner: </strong>
         {business.owner}
