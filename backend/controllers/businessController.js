@@ -41,6 +41,7 @@ const createBusiness = async (req, res) => {
   const {
     businessName,
     owner,
+    campus,
     shortDescription,
     longDescription,
     category,
@@ -111,6 +112,7 @@ const createBusiness = async (req, res) => {
     const business = await Business.create({
       businessName,
       owner,
+      campus,
       shortDescription,
       longDescription,
       category,
